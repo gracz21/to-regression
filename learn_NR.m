@@ -28,8 +28,8 @@ function [error_log_train, error_log_test, error_zero_one_train, error_zero_one_
   error_log_test
   
   #count 0/1 error
-  error_zero_one_train = mean(Y_pred_train.*Y_train < 0);
-  error_zero_one_test = mean(Y_pred_test.*Y_test < 0);
+  error_zero_one_train = mean(Y_pred_train.*Y_train <= 0);
+  error_zero_one_test = mean(Y_pred_test.*Y_test <= 0);
   error_zero_one_train
   error_zero_one_test
   
