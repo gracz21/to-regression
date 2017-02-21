@@ -33,4 +33,23 @@ function [errors_log_training, errors_log_test, errors_zero_ones_training, error
     errors_zero_ones_training = [errors_zero_ones_training, mean(Y_pred_train.*Y_train <= 0)];
     errors_zero_ones_test = [errors_zero_ones_test, mean(Y_pred_test.*Y_test <= 0)];
   end
+  
+  #plot things
+  f = figure();
+  plot(1:5:100, errors_log_training, "-r;Zbior treningowy;",
+    1:5:100, errors_log_test, "-b;Zbior testowy;");
+  title('Zaleznosc bledu logisitycznego od wartosci lambdy');
+  xlabel('lambda');
+  ylabel('wartosc bledu');
+  axis( [0 100 0 max(max(errors_log_training), max(errors_log_test))+0.05] );
+  saveas(f, 'results/plotLogLambda.png');
+  
+  f = figure();
+  plot(1:5:100, errors_zero_ones_training, "-r;Zbior treningowy;",
+    1:5:100, errors_zero_ones_test, "-b;Zbior testowy;");
+  title('Zaleznosc bledu 0/1 od wartosci lambdy');
+  xlabel('lambda');
+  ylabel('wartosc bledu');
+  axis( [0 100 0 max(max(errors_zero_ones_training), max(errors_zero_ones_test))+0.05] );
+  saveas(f, 'results/plotZeroOneLambda.png');
 end
