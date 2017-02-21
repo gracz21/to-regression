@@ -1,4 +1,4 @@
-function [B, grad, H] = count_step_data(X, Y, W, l, n)
+function [B, grad, H] = count_step_data(X, Y, W, l, n, m)
   B = diag(1./(1+e.^(Y.*(X*W))));
   H = X'*B*(eye(n)-B)*X;
   if(cond(H) == Inf)
