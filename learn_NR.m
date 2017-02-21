@@ -1,4 +1,4 @@
-function [error_log_train, error_log_test, error_zero_one_train, error_zero_one_test] = learn_NR()
+function [error_log_train, error_log_test, error_zero_one_train, error_zero_one_test, W] = learn_NR()
   #load train data
   [X_train, Y_train] = readdata("data/train.txt", " ");
   
@@ -33,5 +33,9 @@ function [error_log_train, error_log_test, error_zero_one_train, error_zero_one_
   error_zero_one_train
   error_zero_one_test
   
-  hist(W)
+  #plot histogram
+  f = figure();
+  hist(W);
+  title('Histogram wag dla metody N-R');
+  saveas(f, 'results/histNR.png');
 end
